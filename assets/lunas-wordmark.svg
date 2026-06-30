@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 132" role="img" aria-label="Luna's Restaurant">
+  <title>Luna's Restaurant</title>
+  <text x="210" y="72" text-anchor="middle" fill="#f5efe1" font-family="Bodoni Moda, Didot, Georgia, serif" font-size="74" font-weight="400" letter-spacing="10">LUNA'S</text>
+  <line x1="95" y1="88" x2="325" y2="88" stroke="#f5efe1" stroke-width="2" opacity=".88"/>
+  <text x="210" y="116" text-anchor="middle" fill="#f5efe1" font-family="Poppins, Avenir Next, sans-serif" font-size="18" font-weight="400" letter-spacing="9">RESTAURANT</text>
+</svg>

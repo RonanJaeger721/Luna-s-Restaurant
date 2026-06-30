@@ -29,6 +29,10 @@ body {
   font-family: var(--menu-font);
 }
 
+body.order-open {
+  overflow: hidden;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -40,6 +44,29 @@ a {
 
 strong {
   font-weight: 500;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.brand-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(214, 188, 119, 0.14), transparent 34%),
+    var(--pine-2);
+  pointer-events: none;
+  animation: loader-out 1900ms ease forwards;
+}
+
+.brand-loader img {
+  width: min(360px, 72vw);
+  filter: drop-shadow(0 22px 44px rgba(0, 0, 0, 0.26));
+  animation: logo-open 1350ms cubic-bezier(.2, .8, .2, 1) both;
 }
 
 .site-header {
@@ -55,6 +82,16 @@ strong {
   background: linear-gradient(180deg, rgba(28, 51, 41, 0.92), rgba(28, 51, 41, 0.72));
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(245, 239, 225, 0.14);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  padding: 6px 10px;
+  border-radius: 18px;
+  background: rgba(245, 239, 225, 0.06);
+  border: 1px solid rgba(245, 239, 225, 0.08);
 }
 
 .brand img {
@@ -131,6 +168,7 @@ nav a:hover,
   color: var(--cream);
   background: rgba(28, 51, 41, 0.96);
   border: 1px solid rgba(245, 239, 225, 0.22);
+  border-radius: 24px;
   box-shadow: var(--shadow);
   transform: translate(-50%, -8px) scale(0.98);
   transform-origin: top center;
@@ -159,6 +197,7 @@ nav a:hover,
 }
 
 .dropdown-panel a {
+  border-radius: 16px;
   padding: 13px 14px;
   text-align: left;
   border-bottom: 1px solid rgba(245, 239, 225, 0.1);
@@ -194,6 +233,8 @@ nav a:hover,
 .hero-media {
   position: absolute;
   inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-media img {
@@ -214,6 +255,7 @@ nav a:hover,
 
 .hero-copy {
   position: relative;
+  z-index: 1;
   max-width: 620px;
   padding-bottom: 126px;
   animation: rise-in 800ms ease both 120ms;
@@ -304,6 +346,7 @@ h1 {
 
 .hero-categories {
   position: absolute;
+  z-index: 1;
   left: clamp(18px, 5vw, 70px);
   right: clamp(18px, 5vw, 70px);
   bottom: 36px;
@@ -420,6 +463,7 @@ h1 {
   isolation: isolate;
   color: var(--cream);
   background: var(--pine);
+  border-radius: 26px;
   animation: rise-in 700ms ease both;
   animation-timeline: view();
   animation-range: entry 0% cover 32%;
@@ -467,6 +511,128 @@ h1 {
     linear-gradient(90deg, rgba(28, 51, 41, 0.94), rgba(41, 72, 58, 0.86)),
     url("assets/dining-room.webp") center/cover fixed;
   color: var(--cream);
+}
+
+.menu-invite {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.75fr);
+  gap: clamp(28px, 5vw, 70px);
+  align-items: center;
+}
+
+.menu-invite-copy {
+  max-width: 680px;
+}
+
+.menu-invite-copy h2 {
+  font-size: clamp(2rem, 3.9vw, 3.8rem);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.menu-invite-copy p {
+  max-width: 560px;
+  color: rgba(245, 239, 225, 0.78);
+  line-height: 1.7;
+}
+
+.menu-invite-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.menu-preview {
+  display: grid;
+  grid-template-columns: 1fr 0.78fr;
+  gap: 14px;
+  align-items: end;
+}
+
+.menu-preview img {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+}
+
+.menu-preview img:nth-child(2) {
+  height: 285px;
+  transform: translateY(28px);
+}
+
+.order-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 3vw, 34px);
+}
+
+.order-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 22, 17, 0.68);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+
+.order-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(1240px, 100%);
+  max-height: min(86vh, 900px);
+  overflow: auto;
+  padding: clamp(24px, 4vw, 44px);
+  color: var(--cream);
+  background:
+    linear-gradient(135deg, rgba(28, 51, 41, 0.98), rgba(41, 72, 58, 0.94)),
+    url("assets/dining-room.webp") center/cover;
+  border: 1px solid rgba(245, 239, 225, 0.18);
+  border-radius: 36px;
+  box-shadow: 0 34px 80px rgba(0, 0, 0, 0.34);
+  opacity: 0;
+  transform: translateY(28px) scale(0.97);
+  transition: opacity 280ms ease, transform 360ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.order-modal.open .order-backdrop {
+  opacity: 1;
+}
+
+.order-modal.open .order-dialog {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: sticky;
+  top: 0;
+  left: 100%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-left: auto;
+  margin-bottom: -28px;
+  border: 1px solid rgba(245, 239, 225, 0.26);
+  border-radius: 999px;
+  color: var(--cream);
+  background: rgba(245, 239, 225, 0.1);
+  font: inherit;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: var(--cream);
+  color: var(--pine-2);
 }
 
 .menu-shell {
@@ -525,6 +691,7 @@ h1 {
 .booking-form {
   background: rgba(245, 239, 225, 0.055);
   border: 1px solid rgba(245, 239, 225, 0.13);
+  border-radius: 26px;
 }
 
 .menu-item {
@@ -534,6 +701,7 @@ h1 {
   gap: 14px;
   padding: 15px 0;
   border-width: 0 0 1px;
+  border-radius: 0;
   transform: translateY(0);
   transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
   animation: menu-pop 260ms ease both;
@@ -666,7 +834,7 @@ textarea,
 select {
   width: 100%;
   border: 1px solid rgba(28, 51, 41, 0.18);
-  border-radius: 0;
+  border-radius: 16px;
   padding: 13px 14px;
   background: rgba(255, 255, 255, 0.88);
   color: var(--ink);
@@ -729,6 +897,7 @@ select {
   width: 100%;
   height: auto;
   border: 1px solid rgba(245, 239, 225, 0.2);
+  border-radius: 22px;
 }
 
 .booking {
@@ -755,6 +924,8 @@ address {
   padding: clamp(18px, 3vw, 32px);
   color: var(--ink);
   background: var(--paper);
+  border-color: rgba(28, 51, 41, 0.12);
+  border-radius: 30px;
   box-shadow: none;
   animation: rise-in 700ms ease both;
   animation-timeline: view();
@@ -774,6 +945,7 @@ address {
 .gallery-grid img {
   aspect-ratio: 3 / 4;
   background: var(--pine);
+  border-radius: 26px;
 }
 
 .gallery-grid img:nth-child(2) {
@@ -851,6 +1023,33 @@ address {
   }
 }
 
+@keyframes logo-open {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.92);
+    letter-spacing: 20px;
+  }
+  42% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes loader-out {
+  0%,
+  68% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -904,10 +1103,20 @@ address {
 
   .hero-categories,
   .intro-band,
+  .menu-invite,
   .order-layout,
   .booking,
   .footer {
     grid-template-columns: 1fr;
+  }
+
+  .menu-preview {
+    max-width: 620px;
+  }
+
+  .order-dialog {
+    max-height: 90vh;
+    border-radius: 30px;
   }
 
   .feature-grid {
@@ -1002,5 +1211,49 @@ address {
 
   .menu-item {
     min-height: 150px;
+  }
+
+  .brand-loader img {
+    width: min(290px, 76vw);
+  }
+
+  .brand {
+    padding: 5px 8px;
+    border-radius: 14px;
+  }
+
+  .brand img {
+    width: 132px;
+    height: 40px;
+  }
+
+  .menu-preview {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .menu-preview img,
+  .menu-preview img:nth-child(2) {
+    height: 210px;
+    border-radius: 22px;
+    transform: none;
+  }
+
+  .order-modal {
+    padding: 10px;
+    align-items: end;
+  }
+
+  .order-dialog {
+    width: 100%;
+    max-height: 88vh;
+    padding: 22px 16px;
+    border-radius: 28px 28px 18px 18px;
+  }
+
+  .modal-close {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 2px;
   }
 }

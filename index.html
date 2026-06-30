@@ -14,9 +14,12 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <div class="brand-loader" aria-hidden="true">
+      <img src="assets/lunas-wordmark.svg" alt="">
+    </div>
     <header class="site-header" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Luna's Restaurant home">
-        <img src="assets/lunas-menu-logo.webp" alt="Luna's Restaurant logo from menu">
+        <img src="assets/lunas-wordmark.svg" alt="Luna's Restaurant logo">
       </a>
       <nav class="main-nav" aria-label="Primary">
         <div class="menu-dropdown">
@@ -25,7 +28,7 @@
             <span class="chevron" aria-hidden="true"></span>
           </button>
           <div class="dropdown-panel" id="site-menu">
-            <a href="#menu">Order menu</a>
+            <a href="#menu" data-open-order>Order menu</a>
             <a href="#menu" data-filter-link="breakfast">Breakfast</a>
             <a href="#menu" data-filter-link="dinner">Dinner from 6pm</a>
             <a href="#menu" data-filter-link="drinks">Drinks</a>
@@ -51,7 +54,7 @@
           <p class="hero-text">Breakfast, dinner and drinks in a calm garden setting at Hunters Moon Estate.</p>
           <div class="hero-actions">
             <a class="btn primary" href="#booking">Book a table</a>
-            <a class="btn ghost" href="#menu">Order from menu</a>
+            <button class="btn ghost" type="button" data-open-order>Order from menu</button>
           </div>
         </div>
         <div class="hero-categories" aria-label="Explore Luna's menu categories">
@@ -115,51 +118,73 @@
         </div>
       </section>
 
-      <section class="menu-section" id="menu" aria-labelledby="menu-title">
-        <div class="menu-shell">
-          <div class="menu-top">
-            <div>
-              <p class="kicker">Order online</p>
-              <h2 id="menu-title">Choose from Luna's menu</h2>
-              <p>Pick a few favourites and send the order straight to Luna's on WhatsApp.</p>
-            </div>
-            <div class="menu-tabs" role="tablist" aria-label="Menu categories">
-              <button class="tab active" type="button" data-filter="all">All</button>
-              <button class="tab" type="button" data-filter="breakfast">Breakfast</button>
-              <button class="tab" type="button" data-filter="dinner">Dinner</button>
-              <button class="tab" type="button" data-filter="drinks">Drinks</button>
-              <button class="tab" type="button" data-filter="desserts">Desserts</button>
+      <section class="menu-section" id="menu" aria-labelledby="menu-invite-title">
+        <div class="menu-invite">
+          <div class="menu-invite-copy">
+            <p class="kicker">Order online</p>
+            <h2 id="menu-invite-title">Open Luna's menu when you are ready.</h2>
+            <p>Browse breakfast, dinner, drinks and desserts in a rounded menu drawer, then send the order straight to Luna's on WhatsApp.</p>
+            <div class="menu-invite-actions">
+              <button class="btn primary" type="button" data-open-order>Open order menu</button>
+              <a class="btn ghost" href="#booking">Book a table</a>
             </div>
           </div>
-
-          <div class="order-layout">
-            <div class="menu-list" id="menu-list" aria-live="polite"></div>
-            <aside class="order-panel" aria-labelledby="order-title">
-              <h3 id="order-title">Your order</h3>
-              <div id="order-items" class="order-items empty">No items yet. Add a dish or drink from the menu.</div>
-              <div class="order-total">
-                <span>Total</span>
-                <strong id="order-total">0</strong>
-              </div>
-              <label for="customer-name">Name</label>
-              <input id="customer-name" type="text" placeholder="Your name">
-              <label for="order-note">Pickup or table note</label>
-              <textarea id="order-note" rows="3" placeholder="Example: pickup at 18:30, no onion, table for 2"></textarea>
-              <button class="btn primary full" type="button" id="send-order">Send order on WhatsApp</button>
-            </aside>
+          <div class="menu-preview" aria-hidden="true">
+            <img src="assets/ribs-plate.webp" alt="">
+            <img src="assets/cake-logo.webp" alt="">
           </div>
-
-          <details class="full-menu">
-            <summary>View photographed menu pages</summary>
-            <div class="menu-pages">
-              <img src="assets/menu-breakfast.webp" alt="Luna's breakfast menu">
-              <img src="assets/menu-dinner.webp" alt="Luna's dinner menu">
-              <img src="assets/menu-beverages-cafe.webp" alt="Luna's hot and cold beverages menu">
-              <img src="assets/menu-beverages-wines.webp" alt="Luna's wines, spirits, beers and cocktails menu">
-            </div>
-          </details>
         </div>
       </section>
+
+      <div class="order-modal" id="order-modal" aria-hidden="true" hidden>
+        <div class="order-backdrop" data-close-order></div>
+        <section class="order-dialog" role="dialog" aria-modal="true" aria-labelledby="menu-title" tabindex="-1">
+          <button class="modal-close" type="button" data-close-order aria-label="Close order menu">x</button>
+          <div class="menu-shell">
+            <div class="menu-top">
+              <div>
+                <p class="kicker">Order online</p>
+                <h2 id="menu-title">Choose from Luna's menu</h2>
+                <p>Pick a few favourites and send the order straight to Luna's on WhatsApp.</p>
+              </div>
+              <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+                <button class="tab active" type="button" data-filter="all">All</button>
+                <button class="tab" type="button" data-filter="breakfast">Breakfast</button>
+                <button class="tab" type="button" data-filter="dinner">Dinner</button>
+                <button class="tab" type="button" data-filter="drinks">Drinks</button>
+                <button class="tab" type="button" data-filter="desserts">Desserts</button>
+              </div>
+            </div>
+
+            <div class="order-layout">
+              <div class="menu-list" id="menu-list" aria-live="polite"></div>
+              <aside class="order-panel" aria-labelledby="order-title">
+                <h3 id="order-title">Your order</h3>
+                <div id="order-items" class="order-items empty">No items yet. Add a dish or drink from the menu.</div>
+                <div class="order-total">
+                  <span>Total</span>
+                  <strong id="order-total">0</strong>
+                </div>
+                <label for="customer-name">Name</label>
+                <input id="customer-name" type="text" placeholder="Your name">
+                <label for="order-note">Pickup or table note</label>
+                <textarea id="order-note" rows="3" placeholder="Example: pickup at 18:30, no onion, table for 2"></textarea>
+                <button class="btn primary full" type="button" id="send-order">Send order on WhatsApp</button>
+              </aside>
+            </div>
+
+            <details class="full-menu">
+              <summary>View photographed menu pages</summary>
+              <div class="menu-pages">
+                <img src="assets/menu-breakfast.webp" alt="Luna's breakfast menu">
+                <img src="assets/menu-dinner.webp" alt="Luna's dinner menu">
+                <img src="assets/menu-beverages-cafe.webp" alt="Luna's hot and cold beverages menu">
+                <img src="assets/menu-beverages-wines.webp" alt="Luna's wines, spirits, beers and cocktails menu">
+              </div>
+            </details>
+          </div>
+        </section>
+      </div>
 
       <section class="booking" id="booking" aria-labelledby="booking-title">
         <div class="booking-copy">
@@ -221,7 +246,7 @@
 
     <footer class="footer" id="contact">
       <div>
-        <img src="assets/lunas-menu-logo.webp" alt="Luna's Restaurant logo">
+        <img src="assets/lunas-wordmark.svg" alt="Luna's Restaurant logo">
         <p>Breakfast, dinner, drinks and desserts at Hunters Moon Estate.</p>
       </div>
       <div>

@@ -252,6 +252,9 @@ const orderTotal = document.querySelector("#order-total");
 const tabs = document.querySelectorAll("[data-filter]");
 const menuDropdown = document.querySelector(".menu-dropdown");
 const menuToggle = document.querySelector(".menu-toggle");
+const orderModal = document.querySelector("#order-modal");
+const orderDialog = document.querySelector(".order-dialog");
+const brandLoader = document.querySelector(".brand-loader");
 
 function formatPrice(value) {
   return Number(value).toLocaleString("en", { maximumFractionDigits: 2 });
@@ -319,6 +322,30 @@ function toggleSiteMenu() {
   menuToggle.setAttribute("aria-expanded", String(isOpen));
 }
 
+function openOrderMenu(filter = state.filter) {
+  if (!orderModal) return;
+  setFilter(filter || "all");
+  orderModal.hidden = false;
+  document.body.classList.add("order-open");
+  requestAnimationFrame(() => {
+    orderModal.classList.add("open");
+    orderModal.setAttribute("aria-hidden", "false");
+    orderDialog?.focus();
+  });
+}
+
+function closeOrderMenu() {
+  if (!orderModal) return;
+  orderModal.classList.remove("open");
+  orderModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("order-open");
+  window.setTimeout(() => {
+    if (!orderModal.classList.contains("open")) {
+      orderModal.hidden = true;
+    }
+  }, 320);
+}
+
 menuList.addEventListener("click", (event) => {
   const button = event.target.closest("[data-add]");
   if (!button) return;
@@ -350,8 +377,18 @@ tabs.forEach((tab) => {
 });
 
 document.querySelectorAll("[data-filter-link]").forEach((link) => {
-  link.addEventListener("click", () => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
     setFilter(link.dataset.filterLink);
+    openOrderMenu(link.dataset.filterLink);
+    closeSiteMenu();
+  });
+});
+
+document.querySelectorAll("[data-open-order]").forEach((control) => {
+  control.addEventListener("click", (event) => {
+    event.preventDefault();
+    openOrderMenu();
     closeSiteMenu();
   });
 });
@@ -369,11 +406,18 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeSiteMenu();
+  if (event.key === "Escape") {
+    closeOrderMenu();
+    closeSiteMenu();
+  }
 });
 
 document.querySelectorAll(".dropdown-panel a").forEach((link) => {
   link.addEventListener("click", closeSiteMenu);
+});
+
+document.querySelectorAll("[data-close-order]").forEach((control) => {
+  control.addEventListener("click", closeOrderMenu);
 });
 
 document.querySelector("#send-order").addEventListener("click", () => {
@@ -419,3 +463,7 @@ document.querySelector("#booking-form").addEventListener("submit", (event) => {
 
 renderMenu();
 renderOrder();
+
+window.addEventListener("load", () => {
+  window.setTimeout(() => brandLoader?.remove(), 2100);
+});
