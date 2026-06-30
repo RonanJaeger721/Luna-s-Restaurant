@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Luna's Restaurant | Harare</title>
+    <meta name="description" content="Luna's Restaurant in Hunters Moon Estate, Harare. Breakfast, dinner, drinks, desserts, bookings and food orders.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Luna's Restaurant home">
+        <img src="assets/lunas-menu-logo.webp" alt="Luna's Restaurant logo from menu">
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <div class="menu-dropdown">
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+            <span>Menu</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+          <div class="dropdown-panel" id="site-menu">
+            <a href="#menu">Order menu</a>
+            <a href="#menu" data-filter-link="breakfast">Breakfast</a>
+            <a href="#menu" data-filter-link="dinner">Dinner from 6pm</a>
+            <a href="#menu" data-filter-link="drinks">Drinks</a>
+            <a href="#menu" data-filter-link="desserts">Desserts</a>
+            <a href="#booking">Book a table</a>
+          </div>
+        </div>
+        <a href="#booking">Book</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="header-call" href="tel:+263771727990">077 172 7990</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media">
+          <img src="assets/entrance.webp" alt="Garden entrance walkway at Luna's Restaurant">
+        </div>
+        <div class="hero-copy">
+          <p class="kicker">Hunters Moon Estate, Harare</p>
+          <h1 id="hero-title">Luna's Restaurant</h1>
+          <p class="hero-text">A garden-side restaurant for polished breakfasts, relaxed dinners, cocktails, coffee, and generous plates from the Luna's menu.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#booking">Book a table</a>
+            <a class="btn ghost" href="#menu">Order from menu</a>
+          </div>
+        </div>
+        <div class="hero-categories" aria-label="Explore Luna's menu categories">
+          <a href="#menu" data-filter-link="dinner">
+            <span>Meals</span>
+            <strong>Ribs, burgers, curries, steaks</strong>
+          </a>
+          <a href="#menu" data-filter-link="drinks">
+            <span>Drinks</span>
+            <strong>Cocktails, coffee, juices, wine</strong>
+          </a>
+          <a href="#menu" data-filter-link="desserts">
+            <span>Desserts</span>
+            <strong>Cake, waffles, shakes, sweet bowls</strong>
+          </a>
+        </div>
+      </section>
+
+      <section class="intro-band" aria-label="Luna's highlights">
+        <div>
+          <span>Breakfast till 11:45</span>
+          <strong>Acai bowls, English breakfast, shakshouka, toasties</strong>
+        </div>
+        <div>
+          <span>Dinner from 6pm</span>
+          <strong>Sticky BBQ ribs, seafood platter, ravioli, grilled prawns</strong>
+        </div>
+        <div>
+          <span>Drinks list</span>
+          <strong>Fresh juices, homemade tonics, cocktails, wine and coffee</strong>
+        </div>
+      </section>
+
+      <section class="featured" aria-labelledby="featured-title">
+        <div class="section-heading">
+          <p class="kicker">From the table</p>
+          <h2 id="featured-title">Warm wood, garden light, proper plates.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card large">
+            <img src="assets/ribs-plate.webp" alt="Sticky BBQ ribs with fries and salad">
+            <div>
+              <p>Signature plate</p>
+              <h3>Sticky BBQ Pork Ribs</h3>
+            </div>
+          </article>
+          <article class="feature-card">
+            <img src="assets/breakfast-plate.webp" alt="Full breakfast plate with eggs, bacon, sausage, beans and potatoes">
+            <div>
+              <p>Breakfast</p>
+              <h3>English Breakfast</h3>
+            </div>
+          </article>
+          <article class="feature-card">
+            <img src="assets/cake-logo.webp" alt="Chocolate cake at Luna's Restaurant">
+            <div>
+              <p>Dessert</p>
+              <h3>Chocolate Luna Cake</h3>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="menu-section" id="menu" aria-labelledby="menu-title">
+        <div class="menu-shell">
+          <div class="menu-top">
+            <div>
+              <p class="kicker">Order online</p>
+              <h2 id="menu-title">Choose from Luna's menu</h2>
+              <p>Select food and drinks, then send the order straight to Luna's on WhatsApp.</p>
+            </div>
+            <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+              <button class="tab active" type="button" data-filter="all">All</button>
+              <button class="tab" type="button" data-filter="breakfast">Breakfast</button>
+              <button class="tab" type="button" data-filter="dinner">Dinner</button>
+              <button class="tab" type="button" data-filter="drinks">Drinks</button>
+              <button class="tab" type="button" data-filter="desserts">Desserts</button>
+            </div>
+          </div>
+
+          <div class="order-layout">
+            <div class="menu-list" id="menu-list" aria-live="polite"></div>
+            <aside class="order-panel" aria-labelledby="order-title">
+              <h3 id="order-title">Your order</h3>
+              <div id="order-items" class="order-items empty">No items yet. Add a dish or drink from the menu.</div>
+              <div class="order-total">
+                <span>Total</span>
+                <strong id="order-total">0</strong>
+              </div>
+              <label for="customer-name">Name</label>
+              <input id="customer-name" type="text" placeholder="Your name">
+              <label for="order-note">Pickup or table note</label>
+              <textarea id="order-note" rows="3" placeholder="Example: pickup at 18:30, no onion, table for 2"></textarea>
+              <button class="btn primary full" type="button" id="send-order">Send order on WhatsApp</button>
+            </aside>
+          </div>
+
+          <details class="full-menu">
+            <summary>View photographed menu pages</summary>
+            <div class="menu-pages">
+              <img src="assets/menu-breakfast.webp" alt="Luna's breakfast menu">
+              <img src="assets/menu-dinner.webp" alt="Luna's dinner menu">
+              <img src="assets/menu-beverages-cafe.webp" alt="Luna's hot and cold beverages menu">
+              <img src="assets/menu-beverages-wines.webp" alt="Luna's wines, spirits, beers and cocktails menu">
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="booking" id="booking" aria-labelledby="booking-title">
+        <div class="booking-copy">
+          <p class="kicker">Reservations</p>
+          <h2 id="booking-title">Book the dining room, garden tables, or a quiet breakfast.</h2>
+          <p>Send a reservation request to Luna's with your date, time, party size, and preferred seating. The team can confirm availability directly.</p>
+          <address>
+            Hunters Moon Estate, 3 Ridgeway N, Harare<br>
+            <a href="tel:+263771727990">077 172 7990</a>
+          </address>
+        </div>
+        <form class="booking-form" id="booking-form">
+          <label for="booking-name">Name</label>
+          <input id="booking-name" name="name" type="text" required placeholder="Your name">
+          <div class="form-row">
+            <div>
+              <label for="booking-date">Date</label>
+              <input id="booking-date" name="date" type="date" required>
+            </div>
+            <div>
+              <label for="booking-time">Time</label>
+              <input id="booking-time" name="time" type="time" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="booking-guests">Guests</label>
+              <input id="booking-guests" name="guests" type="number" min="1" max="30" value="2" required>
+            </div>
+            <div>
+              <label for="booking-area">Area</label>
+              <select id="booking-area" name="area">
+                <option>Dining room</option>
+                <option>Garden table</option>
+                <option>Kids play area nearby</option>
+                <option>No preference</option>
+              </select>
+            </div>
+          </div>
+          <label for="booking-message">Message</label>
+          <textarea id="booking-message" name="message" rows="4" placeholder="Birthday, high chair, special request"></textarea>
+          <button class="btn primary full" type="submit">Request booking on WhatsApp</button>
+        </form>
+      </section>
+
+      <section class="gallery" id="gallery" aria-labelledby="gallery-title">
+        <div class="section-heading">
+          <p class="kicker">The space</p>
+          <h2 id="gallery-title">Estate charm, bright interiors, and an easy garden feel.</h2>
+        </div>
+        <div class="gallery-grid">
+          <img src="assets/interior-table.webp" alt="Luna's interior tables and bar">
+          <img src="assets/dining-room.webp" alt="Luna's dining room with teal service window">
+          <img src="assets/garden-table.webp" alt="Outdoor table beside the play area">
+          <img src="assets/sticky-ribs-board.webp" alt="Sticky ribs served on a wooden board">
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div>
+        <img src="assets/lunas-menu-logo.webp" alt="Luna's Restaurant logo">
+        <p>Breakfast, dinner, drinks and desserts at Hunters Moon Estate.</p>
+      </div>
+      <div>
+        <h2>Visit</h2>
+        <p>Hunters Moon Estate, 3 Ridgeway N, Harare</p>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <p><a href="tel:+263771727990">077 172 7990</a></p>
+        <p><a href="https://wa.me/263771727990">WhatsApp Luna's</a></p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
