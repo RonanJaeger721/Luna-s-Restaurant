@@ -9,7 +9,7 @@
   --wood: #9a4f24;
   --gold: #d6bc77;
   --line: rgba(245, 239, 225, 0.24);
-  --shadow: 0 22px 50px rgba(20, 32, 25, 0.22);
+  --shadow: 0 18px 38px rgba(20, 32, 25, 0.16);
   --display: "Bodoni Moda", "Cormorant Garamond", "Bodoni 72", Didot, Georgia, serif;
   --menu-font: Poppins, "Century Gothic", "Avenir Next", "Trebuchet MS", sans-serif;
 }
@@ -50,7 +50,7 @@ strong {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 22px;
-  padding: 12px clamp(18px, 4vw, 54px);
+  padding: 10px clamp(18px, 4vw, 54px);
   color: var(--cream);
   background: linear-gradient(180deg, rgba(28, 51, 41, 0.92), rgba(28, 51, 41, 0.72));
   backdrop-filter: blur(16px);
@@ -58,8 +58,8 @@ strong {
 }
 
 .brand img {
-  width: 164px;
-  height: 52px;
+  width: 150px;
+  height: 46px;
   object-fit: contain;
   object-position: left center;
 }
@@ -174,7 +174,7 @@ nav a:hover,
 .header-call {
   border: 1px solid rgba(245, 239, 225, 0.4);
   border-radius: 999px;
-  padding: 10px 14px;
+  padding: 9px 14px;
   white-space: nowrap;
   font-family: var(--menu-font);
   font-weight: 500;
@@ -182,10 +182,10 @@ nav a:hover,
 
 .hero {
   position: relative;
-  min-height: 96svh;
+  min-height: 92svh;
   display: grid;
-  align-items: end;
-  padding: 112px clamp(18px, 5vw, 70px) 28px;
+  align-items: center;
+  padding: 112px clamp(18px, 5vw, 70px) 48px;
   color: var(--cream);
   overflow: hidden;
   background: var(--pine-2);
@@ -208,14 +208,14 @@ nav a:hover,
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(28, 51, 41, 0.92) 0%, rgba(28, 51, 41, 0.62) 44%, rgba(28, 51, 41, 0.24) 100%),
-    linear-gradient(0deg, rgba(28, 51, 41, 0.92) 0%, transparent 42%);
+    linear-gradient(90deg, rgba(28, 51, 41, 0.88) 0%, rgba(28, 51, 41, 0.56) 42%, rgba(28, 51, 41, 0.16) 100%),
+    linear-gradient(0deg, rgba(28, 51, 41, 0.7) 0%, transparent 46%);
 }
 
 .hero-copy {
   position: relative;
-  max-width: 740px;
-  padding-bottom: 170px;
+  max-width: 620px;
+  padding-bottom: 126px;
   animation: rise-in 800ms ease both 120ms;
 }
 
@@ -238,16 +238,16 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(4rem, 11vw, 9.2rem);
-  line-height: 0.83;
-  max-width: 8ch;
+  font-size: clamp(3.4rem, 7.6vw, 7rem);
+  line-height: 0.9;
+  max-width: 9ch;
   font-weight: 400;
 }
 
 .hero-text {
-  max-width: 610px;
+  max-width: 520px;
   margin: 22px 0 0;
-  font-size: clamp(1.02rem, 1.7vw, 1.35rem);
+  font-size: clamp(0.96rem, 1.25vw, 1.15rem);
   line-height: 1.6;
   color: rgba(245, 239, 225, 0.88);
 }
@@ -306,23 +306,25 @@ h1 {
   position: absolute;
   left: clamp(18px, 5vw, 70px);
   right: clamp(18px, 5vw, 70px);
-  bottom: 24px;
+  bottom: 36px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  border: 1px solid var(--line);
-  background: var(--line);
-  box-shadow: var(--shadow);
+  gap: clamp(18px, 4vw, 56px);
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .hero-categories a {
-  min-height: 128px;
-  padding: 22px;
+  min-height: 92px;
+  padding: 16px 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-decoration: none;
-  background: rgba(28, 51, 41, 0.78);
+  border-top: 1px solid rgba(245, 239, 225, 0.34);
+  border-bottom: 1px solid rgba(245, 239, 225, 0.16);
+  background: transparent;
   animation: rise-in 650ms ease both;
 }
 
@@ -335,17 +337,18 @@ h1 {
 }
 
 .hero-categories a:hover {
-  background: rgba(41, 72, 58, 0.92);
+  color: var(--gold);
+  border-top-color: rgba(214, 188, 119, 0.78);
 }
 
 .hero-categories span {
   font-family: var(--display);
   font-weight: 400;
-  font-size: clamp(1.7rem, 3vw, 3.3rem);
+  font-size: clamp(1.55rem, 2.5vw, 2.6rem);
 }
 
 .hero-categories strong {
-  font-size: 0.84rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: rgba(245, 239, 225, 0.76);
@@ -354,14 +357,15 @@ h1 {
 .intro-band {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  background: var(--pine);
-  color: var(--cream);
-  border-top: 1px solid rgba(245, 239, 225, 0.18);
+  background: var(--paper);
+  color: var(--pine-2);
+  border-top: 1px solid rgba(28, 51, 41, 0.12);
+  border-bottom: 1px solid rgba(28, 51, 41, 0.12);
 }
 
 .intro-band div {
-  padding: clamp(22px, 4vw, 42px);
-  border-right: 1px solid rgba(245, 239, 225, 0.14);
+  padding: clamp(18px, 3vw, 30px) clamp(18px, 4vw, 54px);
+  border-right: 1px solid rgba(28, 51, 41, 0.12);
   animation: fade-in 700ms ease both;
   animation-timeline: view();
   animation-range: entry 0% cover 34%;
@@ -380,33 +384,33 @@ h1 {
 
 .intro-band strong {
   font-family: var(--display);
-  font-size: clamp(1.15rem, 2vw, 1.8rem);
+  font-size: clamp(1rem, 1.55vw, 1.35rem);
   font-weight: 400;
   line-height: 1.25;
 }
 
 .featured,
 .gallery {
-  padding: clamp(54px, 8vw, 104px) clamp(18px, 5vw, 70px);
+  padding: clamp(46px, 7vw, 86px) clamp(18px, 5vw, 70px);
 }
 
 .section-heading {
-  max-width: 780px;
-  margin-bottom: 32px;
+  max-width: 700px;
+  margin-bottom: 28px;
 }
 
 .section-heading h2,
 .menu-top h2,
 .booking h2 {
-  font-size: clamp(2.3rem, 5vw, 5rem);
-  line-height: 0.96;
+  font-size: clamp(2rem, 3.9vw, 3.8rem);
+  line-height: 1;
 }
 
 .feature-grid {
   display: grid;
   grid-template-columns: 1.35fr 0.85fr;
-  grid-template-rows: repeat(2, 320px);
-  gap: 18px;
+  grid-template-rows: repeat(2, 300px);
+  gap: clamp(12px, 2vw, 22px);
 }
 
 .feature-card {
@@ -454,13 +458,13 @@ h1 {
 }
 
 .feature-card h3 {
-  font-size: clamp(1.65rem, 3vw, 3rem);
+  font-size: clamp(1.45rem, 2.45vw, 2.5rem);
 }
 
 .menu-section {
-  padding: clamp(54px, 8vw, 96px) clamp(18px, 5vw, 70px);
+  padding: clamp(48px, 7vw, 86px) clamp(18px, 5vw, 70px);
   background:
-    linear-gradient(90deg, rgba(28, 51, 41, 0.97), rgba(41, 72, 58, 0.92)),
+    linear-gradient(90deg, rgba(28, 51, 41, 0.94), rgba(41, 72, 58, 0.86)),
     url("assets/dining-room.webp") center/cover fixed;
   color: var(--cream);
 }
@@ -519,25 +523,26 @@ h1 {
 .menu-item,
 .order-panel,
 .booking-form {
-  background: rgba(245, 239, 225, 0.08);
-  border: 1px solid rgba(245, 239, 225, 0.18);
+  background: rgba(245, 239, 225, 0.055);
+  border: 1px solid rgba(245, 239, 225, 0.13);
 }
 
 .menu-item {
-  min-height: 132px;
+  min-height: 116px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 14px;
-  padding: 18px;
+  padding: 15px 0;
+  border-width: 0 0 1px;
   transform: translateY(0);
   transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
   animation: menu-pop 260ms ease both;
 }
 
 .menu-item:hover {
-  transform: translateY(-3px);
-  background: rgba(245, 239, 225, 0.12);
-  border-color: rgba(214, 188, 119, 0.32);
+  transform: translateX(3px);
+  background: transparent;
+  border-color: rgba(214, 188, 119, 0.36);
 }
 
 .menu-item h3 {
@@ -603,6 +608,7 @@ h1 {
   position: sticky;
   top: 90px;
   padding: 20px;
+  box-shadow: none;
 }
 
 .order-panel h3 {
@@ -729,7 +735,7 @@ select {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.85fr);
   gap: clamp(26px, 5vw, 70px);
-  padding: clamp(54px, 8vw, 104px) clamp(18px, 5vw, 70px);
+  padding: clamp(48px, 7vw, 90px) clamp(18px, 5vw, 70px);
   background: var(--cream);
 }
 
@@ -749,7 +755,7 @@ address {
   padding: clamp(18px, 3vw, 32px);
   color: var(--ink);
   background: var(--paper);
-  box-shadow: var(--shadow);
+  box-shadow: none;
   animation: rise-in 700ms ease both;
   animation-timeline: view();
   animation-range: entry 0% cover 34%;
@@ -893,7 +899,7 @@ address {
   }
 
   .hero-copy {
-    padding-bottom: 360px;
+    padding-bottom: 300px;
   }
 
   .hero-categories,
@@ -959,7 +965,7 @@ address {
   }
 
   .hero {
-    min-height: 980px;
+    min-height: 860px;
     padding-inline: 16px;
   }
 
@@ -970,7 +976,7 @@ address {
   }
 
   .hero-copy {
-    padding-bottom: 360px;
+    padding-bottom: 260px;
   }
 
   .hero-categories {
@@ -980,12 +986,12 @@ address {
   }
 
   .hero-categories a {
-    min-height: 108px;
-    padding: 18px 20px;
+    min-height: 82px;
+    padding: 13px 20px;
   }
 
   .hero-categories span {
-    font-size: 2rem;
+    font-size: 1.72rem;
   }
 
   .menu-list,
